@@ -1,0 +1,52 @@
+﻿@page
+@model FitnessClub.Pages.Recommandation.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<link href="~/css/crud.css" rel="stylesheet" />
+
+<div class="card">
+    <h1>Add Recommendation</h1>
+
+    <h4>Recommendation Details</h4>
+    <hr />
+
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <!-- Description -->
+        <div class="form-group">
+            <label asp-for="Recommendations.Description" class="control-label"></label>
+            <input asp-for="Recommendations.Description" class="form-control" />
+            <span asp-validation-for="Recommendations.Description" class="text-danger"></span>
+        </div>
+
+        <!-- Category -->
+        <div class="form-group">
+            <label asp-for="Recommendations.Category" class="control-label"></label>
+            <input asp-for="Recommendations.Category" class="form-control" />
+            <span asp-validation-for="Recommendations.Category" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <!-- Empty div to create space -->
+        </div>
+
+        <!-- Submit -->
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+
+    <div>
+        <a asp-page="Index">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

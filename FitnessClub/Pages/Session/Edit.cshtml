@@ -1,0 +1,58 @@
+﻿@page
+@model FitnessClub.Pages.Session.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<link rel="stylesheet" href="~/css/crud.css" />
+
+<div class="container mt-5">
+    <div class="card p-4">
+        <h1>Edit Session</h1>
+        <h4>Update the session details</h4>
+        <hr />
+
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Sessions.Id" />
+
+            <div class="form-group">
+                <label asp-for="Sessions.Date" class="control-label"></label>
+                <input asp-for="Sessions.Date" class="form-control" />
+                <span asp-validation-for="Sessions.Date" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Sessions.Location" class="control-label"></label>
+                <input asp-for="Sessions.Location" class="form-control" />
+                <span asp-validation-for="Sessions.Location" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Sessions.MemberId" class="control-label"></label>
+                <select asp-for="Sessions.MemberId" class="form-control" asp-items="ViewBag.MemberId"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Sessions.TrainerId" class="control-label"></label>
+                <input asp-for="Sessions.TrainerId" class="form-control" />
+                <span asp-validation-for="Sessions.TrainerId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+
+        <div class="mt-3">
+            <a class="btn btn-secondary" asp-page="./Index">Back to List</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

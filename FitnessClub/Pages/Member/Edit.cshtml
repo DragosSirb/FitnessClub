@@ -1,0 +1,65 @@
+﻿@page
+@model FitnessClub.Pages.Member.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<link rel="stylesheet" href="~/css/crud.css" />
+
+<div class="container mt-5">
+    <div class="card p-4">
+        <h1>Edit Member</h1>
+        <h4>Update the member's details</h4>
+        <hr />
+
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Members.Id" />
+
+            <div class="form-group">
+                <label asp-for="Members.UserId" class="control-label">User ID</label>
+                <input asp-for="Members.UserId" class="form-control" />
+                <span asp-validation-for="Members.UserId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Members.MemberName" class="control-label">Member Name</label>
+                <input asp-for="Members.MemberName" class="form-control" />
+                <span asp-validation-for="Members.MemberName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Members.SubscriptionStatus" class="control-label">Subscription Status</label>
+                <input asp-for="Members.SubscriptionStatus" class="form-control" />
+                <span asp-validation-for="Members.SubscriptionStatus" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Members.SubscriptionExpiry" class="control-label">Subscription Expiry</label>
+                <input asp-for="Members.SubscriptionExpiry" class="form-control" />
+                <span asp-validation-for="Members.SubscriptionExpiry" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Members.CurrentWeight" class="control-label">Current Weight</label>
+                <input asp-for="Members.CurrentWeight" class="form-control" />
+                <span asp-validation-for="Members.CurrentWeight" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+
+        <div class="mt-3">
+            <a class="btn btn-secondary" asp-page="./Index">Back to List</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

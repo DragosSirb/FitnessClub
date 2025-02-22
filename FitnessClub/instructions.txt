@@ -1,0 +1,29 @@
+!! Ca sa deschizi aplicatia intri in visual studio code si dai open project solutions si deschizi FitnessClub.sln !!
+
+
+
+
+!! Prima data sa poti crea baza de date si tabelele !!
+
+deschizi nuget console dupa urmatorii pasi:
+
+hover pe tools -> nuget package manager -> package manager console.
+
+comanda pentru a crea toate de mai sus: Update-Database.(Daca nu merge imi scrii si rezolvam)
+
+
+
+!! Pentru a crea un cont de admin !! 
+
+1. Creaza un cont normal (mergi la register si faci un cont cu numele admin admin etc..)
+2. Mergi in baza de date pentru ai modifica rolul ca si admin:
+			hover pe view -> SQL server project Explorer -> LocalDB\MSSQLLOCALDB -> databases -> CabinetMedical
+			-> Tables -> click dreapta pe tabela Members si apesi pe View Data. (Mergi la coloana roles a adminului si
+												pune rolul "Admin")
+
+
+!! Adauga estl chestiilor de pe contul de admin !!
+
+Daca mai ai alte intrebari imi scrii!
+
+							!! SUCCESS !!

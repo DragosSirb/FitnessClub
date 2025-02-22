@@ -1,0 +1,51 @@
+﻿@page
+@model FitnessClub.Pages.Session.IndexModel
+
+@{
+    ViewData["Title"] = "Sessions List";
+}
+
+<link href="~/css/crud.css" rel="stylesheet" />
+
+<div class="card">
+    <h1>Sessions</h1>
+
+    @if (Model.SuccessMessage != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @Model.SuccessMessage
+        </div>
+    }
+
+    <div class="text-end mb-3">
+        <a asp-page="./Create" class="btn btn-primary">Add Session</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Trainer</th>
+                <th>Location</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var session in Model.Sessions)
+            {
+                var trainer = Model.Trainers.FirstOrDefault(t => t.Id == session.TrainerId);
+                <tr>
+                    <td>@session.Date</td>
+                    <td>@trainer.Name</td>
+                    <td>@session.Location</td>
+                    <td>@session.Description</td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@session.Id">Edit</a> |
+                        <a asp-page="./Delete" asp-route-id="@session.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

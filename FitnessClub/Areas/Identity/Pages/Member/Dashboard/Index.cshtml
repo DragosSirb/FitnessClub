@@ -1,0 +1,154 @@
+﻿@page
+@model FitnessClub.Areas.Identity.Pages.Member.Dashboard.IndexModel
+
+@{
+    ViewData["Title"] = "Member Dashboard";
+}
+
+<link href="~/css/crud.css" rel="stylesheet" />
+
+<h1>Welcome to Your Dashboard, @Model.Member.MemberName</h1>
+
+
+
+<hr/>
+
+<div class="card">
+    <h4>Subscription Information</h4>
+    <hr />
+    @if (!string.IsNullOrEmpty(Model.Member.SubscriptionStatus) && Model.Member.SubscriptionStatus != "Inactive")
+    {
+        <p>Status: @Model.Member.SubscriptionStatus</p>
+        <p>Expiry Date: @Model.Member.SubscriptionExpiry.ToString("dd MMM yyyy")</p>
+        <p>
+            @if (Model.Member.CurrentWeight.HasValue)
+            {
+                <span>Current Weight: @Model.Member.CurrentWeight.Value kg</span>
+            }
+            else
+            {
+                <span>Current Weight: Not Set</span>
+                <form method="post">
+                    <div class="form-group">
+                        <label for="Weight">Select Weight (kg):</label>
+                        <input class="form-control" id="Weight" name="Weight" />
+
+                    </div>
+                    <button type="submit" class="btn btn-primary">Set Weight</button>
+                </form>
+            }
+        </p>
+    }
+    else
+    {
+        <p class="text-muted">No subscriptions yet.</p>
+    }
+</div>
+
+<hr />
+
+<div class="card">
+    <h4>Your Booked Sessions</h4>
+    <hr />
+    @if (Model.BookedSessions.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Trainer</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var session in Model.BookedSessions)
+                {
+                    <tr>
+                        <td>@session.Date.ToString("dd MMM yyyy HH:mm")</td>
+                        <td>@session.Trainer.Name</td> 
+                        <td>@session.Location</td>
+                        <td>
+                            <form method="post" asp-page="./Index" asp-route-id="@session.Id">
+                                <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>You have no booked sessions.</p>
+    }
+</div>
+
+
+<hr />
+
+<div class="card">
+    <h4>Available Trainers</h4>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Expertise</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var trainer in Model.AvailableTrainers)
+            {
+                <tr>
+                    <td>@trainer.Name</td>
+                    <td>@trainer.Expertise</td>
+                    <td>
+                        <a asp-page="Session/BookingSessions" asp-route-trainerId="@trainer.Id" class="btn btn-primary btn-sm">Book a Session</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<hr />
+
+<div class="card">
+    <h4>Recommendations</h4>
+    <hr />
+    @if (Model.Recommendations.Any())
+    {
+        <ul>
+            @foreach (var recommendation in Model.Recommendations)
+            {
+                <li>@recommendation.Description</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No recommendations available.</p>
+    }
+</div>
+
+<hr />
+
+<div class="card">
+    <h4>Motivational Quotes</h4>
+    <hr />
+    @if (Model.MotivationalQuotes.Any())
+    {
+        <ul>
+            @foreach (var quote in Model.MotivationalQuotes)
+            {
+                <li>@quote.Text</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No motivational quotes available.</p>
+    }
+</div>

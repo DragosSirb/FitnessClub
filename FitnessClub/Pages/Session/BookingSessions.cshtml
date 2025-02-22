@@ -1,0 +1,36 @@
+﻿@page
+@model FitnessClub.Pages.Session.BookingSessionsModel
+@{
+    ViewData["Title"] = "Book a Private Training Session";
+}
+
+<link href="~/css/crud.css" rel="stylesheet" />
+<h1>Book a Private Training Session</h1>
+<form method="post">
+    <div class="form-group">
+        <label for="TrainerId">Select Trainer</label>
+        <select class="form-control" id="TrainerId" name="TrainerId">
+            @foreach (var trainer in Model.AvailableTrainers)
+            {
+                <option value="@trainer.Id">@trainer.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="Date">Select Date and Time</label>
+        <input type="datetime-local" class="form-control" id="Date" name="Date" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Location">Select Location</label>
+        <select class="form-control" id="Location" name="Location" required>
+            @foreach (var location in Model.AvailableLocations)
+            {
+                <option value="@location">@location</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Book Session</button>
+</form>

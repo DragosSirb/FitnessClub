@@ -1,0 +1,57 @@
+﻿/* Fundalul dashboard-ului */
+body {
+    background-color: #F5F5DC; /* Beige pentru fundal */
+    color: #9b59b6; /* Text mov */
+    font-family: Arial, sans-serif;
+}
+
+/* Carduri pentru informațiile principale */
+.card {
+    background-color: #E6E6FA; /* Fundal lavandă */
+    border: 1px solid #9b59b6; /* Border mov */
+}
+
+    .card h5 {
+        color: #9b59b6; /* Titluri în mov */
+    }
+
+/* Button stilizat */
+.btn-primary {
+    background-color: #9b59b6;
+    border-color: #9b59b6;
+}
+
+    .btn-primary:hover {
+        background-color: #8e44ad;
+        border-color: #8e44ad;
+    }
+
+.btn-secondary {
+    background-color: #8e44ad;
+    border-color: #8e44ad;
+}
+
+    .btn-secondary:hover {
+        background-color: #9b59b6;
+        border-color: #9b59b6;
+    }
+
+/* Lista sesiunilor */
+.list-group-item {
+    background-color: #FFFFFF; /* Fundal alb pentru elementele din listă */
+    border: 1px solid #9b59b6; /* Bordură mov */
+    color: #9b59b6; /* Text mov */
+}
+
+    .list-group-item:hover {
+        background-color: #E6E6FA; /* Fundal lavandă la hover */
+    }
+
+/* Carduri cu citate motivaționale */
+blockquote {
+    background-color: #F9F9F9;
+    border-left: 5px solid #9b59b6;
+    padding-left: 20px;
+    font-style: italic;
+    color: #333;
+}

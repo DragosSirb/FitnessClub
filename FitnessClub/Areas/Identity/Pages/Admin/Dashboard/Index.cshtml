@@ -1,0 +1,65 @@
+﻿@page
+@model FitnessClub.Areas.Identity.Pages.Admin.Dashboard.IndexModel
+@{
+}
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<link href="~/css/admin-dashboard.css" rel="stylesheet" />
+
+<div class="container py-5">
+    <h2 class="text-center">@ViewData["Title"]</h2>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h5>Total Membri</h5>
+                    <p>@Model.TotalMembers</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h5>Total Venituri</h5>
+                    <p>@Model.TotalRevenue</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h5>Membri Activi</h5>
+                    <p>@Model.ActiveMembers</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <h4 class="text-center text-purple">Acțiuni Admin</h4>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item bg-light border border-2 border-purple mb-2">
+                <a href="/Member/Index" class="text-purple link-action">Gestionează Membri</a>
+            </li>
+            <li class="list-group-item bg-light border border-2 border-purple mb-2">
+                <a href="/Subscriptions/Index" class="text-purple link-action">Gestionează Abonamente</a>
+            </li>
+            <li class="list-group-item bg-light border border-2 border-purple mb-2">
+                <a href="/Trainers/Index" class="text-purple link-action">Gestionează Antrenori</a>
+            </li>
+            <li class="list-group-item bg-light border border-2 border-purple mb-2">
+                <a href="/Session/Index" class="text-purple link-action">Gestionează Sesiuni</a>
+            </li>
+            <li class="list-group-item bg-light border border-2 border-purple mb-2">
+                <a href="/MotivationalQote/Index" class="text-purple link-action">Gestionează Fraze Motivaționale</a>
+            </li>
+            <li class="list-group-item bg-light border border-2 border-purple mb-2">
+                <a href="/Recommandation/Index" class="text-purple link-action">Gestionează Recomandări</a>
+            </li>
+        </ul>
+    </div>
+
+</div>

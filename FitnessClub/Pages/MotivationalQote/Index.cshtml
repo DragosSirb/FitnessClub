@@ -1,0 +1,46 @@
+﻿@page
+@model FitnessClub.Pages.MotivationalQote.IndexModel
+
+@{
+    ViewData["Title"] = "Motivational Quotes List";
+}
+
+<link href="~/css/crud.css" rel="stylesheet" />
+
+<div class="card">
+    <h1>Motivational Quotes</h1>
+
+    @if (Model.SuccessMessage != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @Model.SuccessMessage
+        </div>
+    }
+
+    <div class="text-end mb-3">
+        <a asp-page="./Create" class="btn btn-primary">Add Quote</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Quote Text</th>
+                <th>Author</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var quote in Model.MotivationalQotes)
+            {
+                <tr>
+                    <td>@quote.Text</td>
+                    <td>@quote.Author</td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@quote.Id">Edit</a> |
+                        <a asp-page="./Delete" asp-route-id="@quote.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

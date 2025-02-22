@@ -1,0 +1,43 @@
+﻿@page
+@model FitnessClub.Pages.Subscriptions.BuySubscriptionModel
+@{
+    ViewData["Title"] = "Choose Your Subscription Plan";
+}
+
+<link href="~/css/subscription.css" rel="stylesheet" />
+
+<div class="container">
+    <h1 class="text-center">Choose Your Subscription Plan</h1>
+
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="alert alert-success" role="alert">
+            @Model.SuccessMessage
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            @Model.ErrorMessage
+        </div>
+    }
+
+    <div class="row">
+        @foreach (var subscription in Model.Subscriptions)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card subscription-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@subscription.SubscriptionType</h5>
+                        <p class="card-text"><strong>Price:</strong> @subscription.Price?.ToString("C")</p>
+
+                        <form method="post" asp-page-handler="Subscribe" asp-route-id="@subscription.Id">
+                            <button type="submit" class="btn btn-primary w-100">Subscribe Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

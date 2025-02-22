@@ -1,0 +1,47 @@
+﻿@page
+@model FitnessClub.Pages.Recommandation.IndexModel
+
+@{
+    ViewData["Title"] = "Recommendations List";
+}
+
+<link href="~/css/crud.css" rel="stylesheet" />
+
+
+<div class="card">
+    <h1>Our Recommendations</h1>
+
+    @if (Model.SuccessMessage != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @Model.SuccessMessage
+        </div>
+    }
+
+    <div class="text-end mb-3">
+        <a asp-page="./Create" class="btn btn-primary">Add Recommendation</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Recommendation Text</th>
+                <th>Author / Source</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var recommendation in Model.Recommendations)
+            {
+                <tr>
+                    <td>@recommendation.Category</td>
+                    <td>@recommendation.Description</td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@recommendation.Id">Edit</a> |
+                        <a asp-page="./Delete" asp-route-id="@recommendation.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

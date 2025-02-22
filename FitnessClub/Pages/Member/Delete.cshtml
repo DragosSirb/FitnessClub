@@ -1,0 +1,59 @@
+﻿@page
+@model FitnessClub.Pages.Member.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<link href="~/css/crud.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <h1 class="text-center">@ViewData["Title"]</h1>
+    <h3 class="text-center text-danger">Are you sure you want to delete this member?</h3>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title text-center">Member Details</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Members.User)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Members.User.Id)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Members.MemberName)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Members.MemberName)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Members.SubscriptionStatus)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Members.SubscriptionStatus)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Members.SubscriptionExpiry)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Members.SubscriptionExpiry)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Members.CurrentWeight)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Members.CurrentWeight)
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <form method="post" class="text-center mt-4">
+        <input type="hidden" asp-for="Members.Id" />
+        <button type="submit" class="btn btn-danger btn-lg">Delete</button>
+        <br />
+        <a class="btn btn-secondary btn-sm mt-3" asp-page="./Index">Back to List</a>
+    </form>
+</div>

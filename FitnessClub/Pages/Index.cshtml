@@ -1,0 +1,111 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Fitness Club";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<link href="~/css/site.css" rel="stylesheet" />
+
+<div class=" text-center py-5">
+    <h1 class="display-4 text-lavender">Welcome to Fitness Club</h1>
+    <p class="lead text-lavender">Your fitness journey begins here!</p>
+</div>
+
+<main>
+    <section class="container py-5">
+        <div class="row text-center">
+            <div class="col-12 col-md-6">
+                <h2 class="mb-4">Get Started with Fitness</h2>
+                <p class="lead">Join our club and get in shape with personalized plans and expert guidance.</p>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="video-container">
+                    <video autoplay loop muted class="video-bg w-100 rounded shadow">
+                        <source src="/videosAndPhotos/fitness-workoutdbm.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-6">
+                <h2 class="text-center mb-4">Meet Our Trainers</h2>
+                <div class="row">
+                    @foreach (var trainer in Model.Trainers)
+                    {
+                        <div class="col-12 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">@trainer.Name</h5>
+                                    <h6 class="card-subtitle text-muted">@trainer.Expertise</h6>
+                                    <p class="card-text">@trainer.Description</p>
+                                    <form method="post" action="@Url.Page("BookTrainer", new { trainerId = trainer.Id })">
+                                        <button type="submit" class="btn btn-primary w-100">Book Trainer</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="video-container">
+                    <video autoplay loop muted class="video-bg w-100 rounded shadow">
+                        <source src="/videosAndPhotos/fitness-trainer.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Subscriptions</h2>
+            <div class="row">
+                @foreach (var subscription in Model.Subscriptions)
+                {
+                    <div class="col-12 col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">@subscription.SubscriptionType</h5>
+                                <p class="card-text">Start Date: @subscription.StartDate.ToString("dd MMM yyyy")</p>
+                                <p class="card-text">End Date: @subscription.EndDate.ToString("dd MMM yyyy")</p>
+                                <p class="card-text">Status: @subscription.Status</p>
+                                <p class="card-text">Price: @subscription.Price?.ToString("C")</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Upcoming Sessions</h2>
+            <div class="row">
+                @foreach (var session in Model.Sessions)
+                {
+                    <div class="col-12 col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-text">Date: @session.Date.ToString("dd MMM yyyy")</p>
+                                <p class="card-text">Location: @session.Location</p>
+                                <p class="card-text">Description: @session.Description</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+</main>

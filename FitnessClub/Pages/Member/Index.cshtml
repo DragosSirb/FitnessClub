@@ -1,0 +1,50 @@
+﻿@page
+@model FitnessClub.Pages.Member.IndexModel
+
+@{
+    ViewData["Title"] = "Members List";
+}
+
+<link href="~/css/crud.css" rel="stylesheet" />
+
+<div class="card">
+    <h1>Members</h1>
+
+    @if (Model.SuccessMessage != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @Model.SuccessMessage
+        </div>
+    }
+
+    <div class="text-end mb-3">
+        <a asp-page="./Create" class="btn btn-primary">Add Member</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Member Name</th>
+                <th>Subscription Status</th>
+                <th>Subscription Expiry</th>
+                <th>Current Weight</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var member in Model.Members)
+            {
+                <tr>
+                    <td>@member.MemberName</td>
+                    <td>@member.SubscriptionStatus</td>
+                    <td>@member.SubscriptionExpiry</td>
+                    <td>@member.CurrentWeight</td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@member.Id">Edit</a> |
+                        <a asp-page="./Delete" asp-route-id="@member.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
